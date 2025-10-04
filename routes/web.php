@@ -68,4 +68,9 @@ Route::middleware(['CekLogin:petugas'])->group(function () {
     Route::get('/manage-petugas/{id}/edit', [PetugasController::class, 'edit'])->name('manage.petugas.edit');
     Route::put('/manage-petugas/{id}', [PetugasController::class, 'update'])->name('manage.petugas.update');
     Route::delete('/manage-petugas/{id}', [PetugasController::class, 'destroy'])->name('manage.petugas.destroy');
+
+    Route::get('/petugas/permohonan/total', [DokumenPermohonanController::class, 'total'])->name('permohonan.total');
+    Route::get('/petugas/permohonan/pending', [DokumenPermohonanController::class, 'pending'])->name('permohonan.pending');
+    Route::get('/petugas/permohonan/disetujui', [DokumenPermohonanController::class, 'disetujui'])->name('permohonan.disetujui');
+    Route::get('/petugas/permohonan/ditolak', [DokumenPermohonanController::class, 'ditolak'])->name('permohonan.ditolak');
 });

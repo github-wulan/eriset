@@ -27,6 +27,30 @@ class DokumenPermohonanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function total()
+    {
+        // Logika untuk mengambil semua data permohonan dari database
+        return view('dashboard.manage-petugas.total_permohonan');
+    }
+
+    public function pending()
+    {
+        // Logika untuk mengambil data permohonan yang pending
+        return view('dashboard.manage-petugas.pending');
+    }
+
+    public function disetujui()
+    {
+        // Logika untuk mengambil data permohonan yang disetujui
+        return view('dashboard.manage-petugas.disetujui');
+    }
+
+    public function ditolak()
+    {
+        // Logika untuk mengambil data permohonan yang ditolak
+        return view('dashboard.manage-petugas.ditolak');
+    }
+
 public function store(Request $request)
     {
         $validated = $request->validate([
