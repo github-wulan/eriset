@@ -27,4 +27,23 @@ public function dashboardPetugas()
         $dokumenTidakLengkap = DokumenPermohonan::where('status', 'dokumen_tidak_lengkap')->count();
         return view('dashboard.petugas', compact('permohonans', 'total', 'pending', 'disetujui', 'ditolak', 'dokumenTidakLengkap'));
     }
+
+    public function getDataDashboarad(){
+        $permohonans = DokumenPermohonan::with('user')->latest()->paginate(10);
+
+        $total = $permohonans->total();
+        $pending = DokumenPermohonan::where('status', 'diproses')->count();
+        $disetujui = DokumenPermohonan::where('status', 'diterima')->count();
+        $ditolak = DokumenPermohonan::where('status', 'ditolak')->count();
+        $dokumenTidakLengkap = DokumenPermohonan::where('status', 'dokumen_tidak_lengkap')->count();
+
+        $data = [
+            'total' => $total,
+            'pending' => $pending,
+            'disetujui' => $disetujui,
+            'ditolak' => $ditolak,
+            'dokumen_tidak_lengkap' => $dokumenTidakLengkap,
+        ];
+        return response()->json($data);
+    }
 }
