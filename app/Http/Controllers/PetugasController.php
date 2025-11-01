@@ -45,7 +45,6 @@ class PetugasController extends Controller
     public function index()
     {   
         $petugas = Petugas::all();
-        dd($petugas);
         return view('dashboard.manage-petugas.index', compact('petugas'));
     }
 

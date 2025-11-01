@@ -187,6 +187,12 @@
                                     'text-white');
                                 else this.classList.add('bg-secondary', 'text-white');
 
+                                // Get Data Dashboard
+
+                                const res = await fetch('/dashboard-petugas/data');
+                                const data = await res.json();
+                                console.log(data);
+                                
                                 // Swal success
                                 Swal.fire({
                                     icon: 'success',
