@@ -75,10 +75,6 @@
 
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Start Bootstrap
-        </div>
-        <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
             @if (Auth::guard('web')->check())
                 {{ Auth::guard('web')->user()->nama_lengkap }}
             @elseif (Auth::guard('petugas')->check())
