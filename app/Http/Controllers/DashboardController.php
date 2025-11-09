@@ -46,4 +46,22 @@ public function dashboardPetugas()
         ];
         return response()->json($data);
     }
+
+    public function getStatistikPermohonan()
+    {
+        $total = (int) DokumenPermohonan::count();
+        $pending = (int) DokumenPermohonan::where('status', 'diproses')->count();
+        $disetujui = (int) DokumenPermohonan::where('status', 'diterima')->count();
+        $ditolak = (int) DokumenPermohonan::where('status', 'ditolak')->count();
+        $dokumenTidakLengkap = (int) DokumenPermohonan::where('status', 'dokumen_tidak_lengkap')->count();
+
+        // Pastikan key-nya sama dengan yang dicari di JavaScript
+        return response()->json([
+            'total' => $total,
+            'pending' => $pending,
+            'disetujui' => $disetujui,
+            'ditolak' => $ditolak,
+            'dokumenTidakLengkap' => $dokumenTidakLengkap
+        ]);
+    }
 }
