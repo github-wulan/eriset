@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokumenPermohonanController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\TopikRisetController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -77,3 +78,11 @@ Route::middleware(['CekLogin:petugas'])->group(function () {
     Route::get('/petugas/statistik-permohonan', [DashboardController::class, 'getStatistikPermohonan'])->name('petugas.statistik'); 
     Route::get('/dashboard-petugas/data', [DashboardController::class, 'getDataDashboarad'])->name('dashboard.petugas.data');
 });
+
+//   Topik Riset (CRUD)
+    Route::get('/manage-topik', [TopikRisetController::class, 'index'])->name('manage.topik.index');
+    Route::get('/manage-topik/create', [TopikRisetController::class, 'create'])->name('manage.topik.create');
+    Route::post('/manage-topik', [TopikRisetController::class, 'store'])->name('manage.topik.store');
+    Route::get('/manage-topik/{id}/edit', [TopikRisetController::class, 'edit'])->name('manage.topik.edit');
+    Route::put('/manage-topik/{id}', [TopikRisetController::class, 'update'])->name('manage.topik.update');
+    Route::delete('/manage-topik/{id}', [TopikRisetController::class, 'destroy'])->name('manage.topik.destroy');

@@ -17,6 +17,11 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
                             Kelola Petugas
                         </a>
+
+                        <a class="nav-link" href="{{ route('manage.topik.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                            Kelola Topik Riset
+                        </a>
                     @endif
 
                     {{-- Role pelaksana --}}
@@ -81,5 +86,5 @@
                 {{ Auth::guard('petugas')->user()->nama }}
             @endif
         </div>
-    </nav>
+    </nav>
 </div>
